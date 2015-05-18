@@ -6,17 +6,17 @@ I try to make it as much KISS as I can.
 
 examples:
 
-class CreateCarView(QuickView):
-	fields = '__all__'
-	url_redirect = 'cars-list'
+	class CreateCarView(QuickView):
+		fields = '__all__'
+		url_redirect = 'cars-list'
   
-	get(self):
-		self.form()
-		self.template()
+		get(self):
+			self.form()
+			self.template()
 	
-	post(self):
-		self.saveform()
-		self.redirection()
+		post(self):
+			self.saveform()
+			self.redirection()
 
 
 
