@@ -9,6 +9,7 @@ examples:
 	class CreateCarView(QuickView):
 		fields = '__all__'
 		url_redirect = 'cars-list'
+		
   
 		get(self):
 			self.form()
