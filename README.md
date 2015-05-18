@@ -1,7 +1,7 @@
 django-quickview
 
 quick examples are better, then complex explanation.
-Who want to keep your code clean, Quickviews are made for you.
+If you want to keep your code clean, Quickviews are made for you.
 I try to make it as much KISS as I can.
 
 examples:
