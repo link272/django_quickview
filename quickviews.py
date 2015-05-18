@@ -362,13 +362,13 @@ class ResponseBase(BaseView):
                                 context = self.context,
                                 using = None)
                                 
-    def redirection(self):
+    def redirection(self, **kwargs):
         """
         Ending function, redirecting
         
         """
         url = reverse_lazy(self.url_pattern)
-        return http.HttpResponseRedirect(url)
+        return http.HttpResponseRedirect(url, **kwargs)
     
 
 
