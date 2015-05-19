@@ -32,8 +32,10 @@ class BaseView(object):
         self.args = args
         
         for key, value in six.iteritems(self.kwargs):
-            if key not in self.__class__.http_method_names or self._dic_.keys():
-                setattr(self, key, value)
+            if key not in self.__class__.http_method_names:
+            	if hasattr(self, key):
+	            	if getattr(self, key) == None:
+                		setattr(self, key, value)
 
         update_wrapper(self, self.__class__, updated=())
         update_wrapper(self, self.__call__ , assigned=())
