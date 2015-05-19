@@ -25,6 +25,8 @@ class BaseView(object):
         updating the wrapper
         dispach to appropriate method, most of the time: get, post, delete
         
+        every attributs given from the request as to be set to None first
+        
         """
         self = copy.deepcopy(self)
         self.request = request
