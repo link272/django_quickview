@@ -34,12 +34,6 @@ class BaseView(object):
         dispach to appropriate method, most of the time: get, post, delete
         
         every attributs given from the request as to be set to None first
-        
-        Initialisation of a view, if "model" is provided, it will be use in several fonction:
-        (listing, paginate, form, saveform, Uform, saveUform, delete)
-        
-        if template_name attribute is not set, template_name = "object_app/object_name" is generated
-        you can add any suffix you want to it, commons ones are detailed in the doc of each functions
         """
         
         self = copy.deepcopy(self)
@@ -469,6 +463,14 @@ class QuickView(FormBase, DisplayBase, Responsebase, DeleteBase):
         """
         
     def __init__(self, request, *args, **kwargs):
+    	
+    	"""
+        Initialisation of a view, if "model" is provided, it will be use in several fonction:
+        (listing, paginate, form, saveform, Uform, saveUform, delete)
+        
+        if template_name attribute is not set, template_name = "object_app/object_name" is generated
+        you can add any suffix you want to it, commons ones are detailed in the doc of each functions
+        """
     	
     	if self.model != None:
             self.model_name = model._meta.model_name
