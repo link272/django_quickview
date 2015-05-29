@@ -74,8 +74,6 @@ class ModelBaseView(BaseView):
     """
     model = None
     context = None
-    template_name = None
-    url_pattern = None
 
     
         
