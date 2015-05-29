@@ -1,6 +1,5 @@
 #-*- coding : utf-8 -*-
 import logging
-import copy
 from django.forms import models as model_forms
 from django.template.response import TemplateResponse
 from django.core.paginator import Paginator
@@ -35,8 +34,6 @@ class BaseView(object):
         
         every attributs from the request as to be set to None first in your code
         """
-        
-        self = copy.deepcopy(self)
         self.request = request
         self.kwargs = kwargs
         self.args = args
