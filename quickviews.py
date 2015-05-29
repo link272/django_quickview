@@ -15,7 +15,7 @@ class BaseView(object):
     kwargs = None
     args = None
     
-    def __call__(self, request, *args, **kwargs):
+    def __init__(self, request, *args, **kwargs):
         
         """
         as_view() like of django_master
@@ -465,7 +465,7 @@ class QuickView(FormBase, DisplayBase, Responsebase, DeleteBase):
                         'trace']
         
         
-    def __init__(self, model = None, suffix = None):
+    def setup(self):
         
         """
         Initialisation of a view, if "model" is provided, it will be use in several fonction:
@@ -474,15 +474,14 @@ class QuickView(FormBase, DisplayBase, Responsebase, DeleteBase):
         if template_name attribute is not set, template_name = "object_app/object_name" is generated
         you can add any suffix you want to it, commons ones are detailed in the doc of each functions
         """
-        
-        self.suffix = suffix
-        if model != None:
-            self.model = model
+		if self.model != None:
             self.model_name = model._meta.model_name
             self.model_app = model._meta.model_app
             if self.template_name == None:
                 self.template_name = "%s/%s" % (self.model_app, self.model_name)
                 if self.suffix != None:
                     self.template_name += "_" + suffix + ".html"
+    	else:
+        	self.model = False
         self.logger = logging.getLogger('django.request')
         self.context = dict()
