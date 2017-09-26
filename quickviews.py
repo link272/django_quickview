@@ -28,7 +28,6 @@ class BaseView(object):
         as_view() like of django_master
         Main entry point for all views, we check some security about given arguments
         
-        creating a deepcopy of the view to erase border effects
         updating the wrapper
         dispach to appropriate method, most of the time: get, post, delete
         
@@ -124,7 +123,7 @@ class FormBase(ModelBaseView):
             return False
         
     
-    def Uform(self, pk_pattern = "pk"):
+    def uform(self, pk_pattern = "pk"):
         """
         
         Same as form(), with an object instance
@@ -143,7 +142,7 @@ class FormBase(ModelBaseView):
         self.context[context_name] = objects
         
     
-    def saveUform(self, pk_pattern = "pk"):
+    def saveuform(self, pk_pattern = "pk"):
         """
         
         Same as saveform(), with an object instance
@@ -384,7 +383,7 @@ class ResponseBase(BaseView):
 class QuickView(FormBase, DisplayBase, Responsebase, DeleteBase):
     
     """
-        You need to build your own view from this one, basically, just write get() and post() fonctions:
+        You can build your own view from this one, basically, just write get() and post() fonctions:
         
         For simple views:
         In any case you need to pass model, suffix arguments
@@ -393,7 +392,7 @@ class QuickView(FormBase, DisplayBase, Responsebase, DeleteBase):
         PaginatedView | --                     | paginate() + template()   | --                          |
         DetailView    | --                     | detail()   + template()   | --                          |
         CreateView    | fields + url_pattern   | form()     + template()   | saveform()  + redirection() |
-        UpdateView    | fields + url_pattern   | Uform()    + template()   | saveUform() + redirection() |
+        UpdateView    | fields + url_pattern   | uform()    + template()   | saveuform() + redirection() |
         DeleteView    | url_pattern            | detail()   + template()   | remove()    + redirection() |
         
         class Exemple1ListView(QuickView):
